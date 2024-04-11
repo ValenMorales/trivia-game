@@ -5,7 +5,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import {characterRickAndMorty,characterStarWars,characterPokemon} from '../helpers/characterCall.js'
+import {characterRickAndMorty,characterStarWars,characterPokemon,filterAllForNameWithImage} from '../helpers/characterCall.js'
 
 const rickAndMorty = ref([]);
 const starWars = ref([]);

@@ -29,3 +29,12 @@ export async function characterPokemon() {
         console.log(error)
     }
 }
+
+export function filterAllForNameWithImage(object){
+    return object.map((character) => {
+        return {
+            name: character.name,
+            image: character.image
+        }
+    })
+}
