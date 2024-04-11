@@ -50,11 +50,13 @@ export async function characterMarvel() {
 }
 
 
-export function filterAllForNameWithImage(object){
+export function filterAllRickAndMorty(object){
     return object.map((character) => {
         return {
             name: character.name,
-            image: character.image
+            image: character.image,
+            gender :character.gender,
+            species : character.species
         }
-    })
+    });
 }
