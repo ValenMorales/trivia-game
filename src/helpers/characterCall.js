@@ -15,3 +15,12 @@ export function characterPokemon() {
         .then(response => response.json())
         .then(data => data.results)
 }
+
+export function filterAllForNameWithImage(object){
+    return object.map(character => {
+        return {
+            name: character.name,
+            image: character.image
+        }
+    })
+}

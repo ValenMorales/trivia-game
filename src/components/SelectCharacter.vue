@@ -1,18 +1,11 @@
 <template>
-    <h1>hola</h1>
-    <h1>hola</h1>
-    <h1>hola</h1>
-    <h1>hola</h1>
-    <h1>hola</h1>
-    <h1>hola</h1>
-    <h1>hola</h1>
     <button @click="getCharacters">click</button>
 </template>
 
 
 <script setup>
 import { ref } from 'vue'
-import {characterRickAndMorty,characterStarWars,characterPokemon} from '../helpers/characterCall.js'
+import {characterRickAndMorty,characterStarWars,characterPokemon,filterAllForNameWithImage} from '../helpers/characterCall.js'
 
 const rickAndMorty = ref([]);
 const starWars = ref([]);
@@ -26,6 +19,10 @@ async function getCharacters(){
     console.log(rickAndMorty.value);
     console.log(starWars.value);
     console.log(pokemon.value);
+
+    console.log(filterAllForNameWithImage(rickAndMorty.value));
+    console.log(filterAllForNameWithImage(starWars.value));
+    console.log(filterAllForNameWithImage(pokemon.value));
 }
 
 </script>
