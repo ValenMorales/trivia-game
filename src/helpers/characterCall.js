@@ -30,6 +30,26 @@ export async function characterPokemon() {
     }
 }
 
+export async function characterMarvel() {
+    try{
+        const publicKey = "3149e996393fa95d1f39ea7e5ff1313b";
+        const url = `https://gateway.marvel.com/v1/public/characters?apikey=${publicKey}`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (!data || !data.data || !data.data.results) {
+            console.log('Error: Respuesta de la API inesperada', data);
+            return;
+        }
+
+        return data.data.results;
+    } catch(error){
+        console.log('Error al obtener datos de la API de Marvel:', error);
+    }
+}
+
+
 export function filterAllForNameWithImage(object){
     return object.map((character) => {
         return {
