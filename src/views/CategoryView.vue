@@ -1,14 +1,18 @@
 <script setup>
-
+import CategoryCarrousel from '@/components/CategoryCarrousel.vue';
+const categories = ['marvel', 'movies', 'rickandmorty', 'starwars', 'pokemon'];
+const categoryImages = ['marvel.jpg', 'movies.jpg', 'rick.jpg', 'starwars.jpg', 'pokemon.jpg'];
 
 </script>
 
 <template>
 
-    <div class="gallery-selector">
-        <h1>Category Selector</h1>
-            <button>Get a random category</button>
-    </div>
+   
+        <CategoryCarrousel
+        :categories="categories"
+        :categoryImages="categoryImages"
+        ></CategoryCarrousel>
+
   
 </template>
 

@@ -6,8 +6,9 @@ const router = createRouter({
   routes: [
     {
       path: '/categories',
+      name: 'categorieView',
       component: CategoryView
-    },
+    }
   ]
 })
 

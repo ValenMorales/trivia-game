@@ -1,16 +1,14 @@
 <script setup>
-import SelectCharacter from './components/SelectCharacter.vue';
+
+import { RouterLink, RouterView } from 'vue-router'
 
 </script>
 
 <template>
-  <SelectCharacter/>
 
-  <div class="gallery-selector">
-    <h1>Category Selector</h1>
-    <RouterLink to="/categories">Go to categories</RouterLink>
-  </div>
+ 
 
+<RouterView/>
   
 </template>
 
