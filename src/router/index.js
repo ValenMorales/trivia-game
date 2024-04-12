@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import CategoryCarrouselView from '../views/CategoryCarrouselView.vue'
 import CategoryView from '../views/CategoryView.vue'
+import CharactersView from '../views/CharactersView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,6 +15,11 @@ const router = createRouter({
       path: '/categories/:category',
       name: 'categoryView',
       component: CategoryView
+    },
+    {
+      path: '/characters',
+      name: 'charactersView',
+      component: CharactersView
     }
   ]
 })
