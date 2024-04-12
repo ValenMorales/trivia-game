@@ -1,5 +1,5 @@
 <template>
-    <div :style="styles">
+    <div class ="principal":style="styles">
       <div class="slick">
         <picture>
             <img :src="'../../' + categoryImage" alt="Image" />
@@ -15,7 +15,9 @@
   const props = defineProps(['seleccionada', 'categoryName', 'categoryImage']);
 
 const styles = computed(() => ({
-  background: props.seleccionada ? 'yellow' : 'transparent'
+  background: props.seleccionada ? 'yellow' : 'transparent',
+  transform: props.seleccionada ? 'scale(1.1)' : 'none' //
+  
 }));
   </script>
   

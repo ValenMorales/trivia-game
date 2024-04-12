@@ -2,26 +2,58 @@
 import CategoryItem from "@/components/CategoryItem.vue";
 import { ref } from "vue";
 
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
+
 const props = defineProps(["categories", "categoryImages",]);
 const index = ref(-1);
 
 const seleccionarAleatorio = () => {
   index.value = -1;
-  for (let i = 0; i < 20; i++) {
-    setTimeout(() => {
-      index.value = Math.floor(Math.random() * props.categories.length);
-    }, i * 400); 
+let i = 0;
+const interval = setInterval(() => {
+  index.value = Math.floor(Math.random() * props.categories.length);
+  i++;
+  if (i >= 30) {
+    clearInterval(interval); 
+    openSelectedCategory(index.value);
   }
+}, 100);
+
+
+ 
 };
+
 
 const seleccionar = (itemIndex) => {
   return itemIndex === index.value;
 };
+
+
+const openSelectedCategory = (indice) => {
+
+  setTimeout(() => {
+    
+  const category=props.categories[indice];
+  router.push({
+    name: "categoryView", 
+    params: {
+      category:category,
+    },
+  });
+    
+  }, 1000);
+
+}
+
 </script>
 
 <template>
   <div class="Carousel">
-    <h2>Subcategory Carousel</h2>
+    <h2>Categories</h2>
     <div class="slick-list" id="slick-list">
       <div class="slick-track" id="track">
         <CategoryItem
@@ -44,7 +76,6 @@ const seleccionar = (itemIndex) => {
 .Carousel h2 {
   font-size: 26px;
   line-height: 38px;
-  padding-bottom: 24px;
   opacity: 0.9;
   text-transform: uppercase;
   text-align: center;
@@ -58,7 +89,6 @@ const seleccionar = (itemIndex) => {
   align-items: center;
   width: fit-content;
   height: 60vh;
-  padding: 10px 0px;
   margin: 0px auto;
   max-width: 90vw;
   overflow: hidden;

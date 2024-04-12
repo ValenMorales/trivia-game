@@ -1,21 +1,5 @@
-<script setup>
-import CategoryCarrousel from '@/components/CategoryCarrousel.vue';
-const categories = ['marvel', 'movies', 'rickandmorty', 'starwars', 'pokemon'];
-const categoryImages = ['marvel.jpg', 'movies.jpg', 'rick.jpg', 'starwars.jpg', 'pokemon.jpg'];
-
-</script>
-
+<script setup></script>
 <template>
-
-   
-        <CategoryCarrousel
-        :categories="categories"
-        :categoryImages="categoryImages"
-        ></CategoryCarrousel>
-
-  
+    <h1>soy una categoria especifica</h1>
 </template>
-
-<style scoped>
-
-</style>
+<style scoped></style>
