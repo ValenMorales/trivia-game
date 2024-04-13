@@ -1,11 +1,14 @@
 <script setup>
 import QuestionTemplate from './QuestionTemplate.vue';
 
+// const emits = defineEmits(['score1', 'score2'])
+// este emit se setea dependiendo del indice que reciba en una prop 
+// envia verdadero o falso del score, si la opcion seleccionada es correcta
+// hacer que las opciones sean seleccionables 
+
 const props = defineProps(['movies']);
 const generateRandomIndex = () => {
-
         return props.movies[Math.floor(Math.random() * props.movies.length)];
-
 }
 const generateRandomQuestion = () =>{
     const movie = generateRandomIndex();

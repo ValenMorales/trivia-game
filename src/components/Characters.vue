@@ -1,6 +1,6 @@
 <script setup>
 const emit = defineEmits(['buttonAction'])
-const props = defineProps(['buttonText'])
+const props = defineProps(['buttonText', 'first' , 'second'])
 
 const username1=localStorage.getItem('username1')
 const username2=localStorage.getItem('username2')
@@ -11,13 +11,23 @@ const username2=localStorage.getItem('username2')
 
 <div class="characters">
     <div class="character-info">
-      <img v-if="username1 != '' " :src="'https://robohash.org/set_set5/' + username1 + '.png'">
+      <div class="info">
+        <img v-if="username1 != '' " :src="'https://robohash.org/set_set5/' + username1 + '.png'">
       <p>{{ username1 }}</p>
+
+      </div>
+      <img v-if="first"  class="arrow" src="../../izquieda.png">
+
+
     </div>
+
     <button @click="emit('buttonAction')">{{ buttonText }}</button>
     <div class="character-info">
-      <img v-if="username2 != '' " :src="'https://robohash.org/set_set5/' + username2 + '.png'">
+      <img v-if="second" class="arrow" src="../../derecha.png">
+      <div class="info">
+        <img v-if="username2 != '' " :src="'https://robohash.org/set_set5/' + username2 + '.png'">
       <p>{{ username2 }}</p>
+      </div>
     </div>
    
   </div>
@@ -38,9 +48,10 @@ button:hover {
   margin-top: 20px;
 }
 
-.characters img {
+.info img {
   width: 100px;
   height: 100px;
+
 }
 
 .characters p{
@@ -61,4 +72,17 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
 }
+
+.character-info {
+  display:flex;
+  align-items: center;
+}
+
+.arrow{
+  margin-left: 20px ;
+  margin-right: 20px;
+  width: 2rem;
+  height: 2rem;
+}
+
 </style>
