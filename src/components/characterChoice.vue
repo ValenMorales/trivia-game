@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-const username = ref('');
+const user = ref('');
 const userindex = ref('');
 const props = defineProps(['index']);
-const createUser = () => {
+const createUser = (username) => {
    userindex.value = `username${props.index}`;
-  localStorage.setItem(userindex.value, username.value);
+   user.value = username;
+  localStorage.setItem(userindex.value, user.value);
+  
+  console.log(user.value);
 }
 
 </script>
@@ -16,14 +19,13 @@ const createUser = () => {
 
         <div class="slick">
         <picture>
-            <img v-if="username != '' " :src="'https://robohash.org/set_set5/' + username + '.png'">
-
+            <img v-if="user != '' " :src="'https://robohash.org/set_set5/' + user + '.png'">
         </picture>
       </div>
         <div class="input">
             <h3>Type a username and get a random character</h3>
             <input  v-model="username" type="text" >
-            <button @click="createUser()"></button>
+            <button @click="createUser(username)">select</button>
          
         </div>
        

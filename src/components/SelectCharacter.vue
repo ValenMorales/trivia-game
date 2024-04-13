@@ -41,13 +41,11 @@ async function getCharacters(){
     pokemon.value = await characterPokemon();
     marvel.value = await characterMarvel();
     movies.value = await tvShows();
-    moviesSpecified.value = await tvShowsSpecified();
 
     console.log(rickAndMorty.value , "rickAndMorty");
     console.log(starWars.value ,"starWars");
     console.log(pokemon.value ,"pokemon");
     console.log(movies.value ,"movies");
-    console.log(moviesSpecified.value ,"moviesSpecified");
   
     filteredCharacters.value = filterAllRickAndMorty(rickAndMorty.value);
     localStorage.setItem('rickandmorty',  JSON.stringify(rickAndMorty.value));
