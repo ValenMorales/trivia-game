@@ -1,18 +1,33 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import CategoryCarrouselView from '../views/CategoryCarrouselView.vue'
+import CategoryView from '../views/CategoryView.vue'
+import CharactersView from '../views/CharactersView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
-     
+      path: '/categories',
+      name: 'categorieCarrouselView',
+      component: CategoryCarrouselView
     },
     {
-     
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      path: '/categories/:category',
+      name: 'categoryView',
+      component: CategoryView
+    },
+    {
+      path: '/characters',
+      name: 'charactersView',
+      component: CharactersView
+    },
+    {
+      path: '/score',
+      name:'scoreView',
+      component: () => import('../views/ScoreView.vue')
     }
   ]
 })
+
 
 export default router
