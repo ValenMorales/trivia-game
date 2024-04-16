@@ -5,27 +5,31 @@ const userindex = ref("");
 const props = defineProps(["index"]);
 const inUse = ref(false)
 const createUser = (username) => {
-  let players = localStorage.getItem("players");
-  const username1 = localStorage.getItem("username1");
-  console.log(username1);
+    userindex.value = `username${props.index}`;
+    const username1= localStorage.getItem("username1");
+    const username2= localStorage.getItem("username2");
+  
+  const score1 = JSON.parse(localStorage.getItem(username + "score")) || null;
+  console.log(score1);
 
-  players = JSON.parse(players);
-  if ((players != null && username in players) || username1 == username) {
+  if ((username1 == username || username2 == username) ||  score1 != null  ) 
+  {
     inUse.value = true;
-    setTimeout(() =>
-    {
-       inUse.value= false;
+
+    setTimeout(() => {
+      inUse.value = false;
     }, 1000);
-    
     return;
   }
 
-  userindex.value = `username${props.index}`;
-  const userScore = `score${props.index}`;
+ 
 
   user.value = username;
   localStorage.setItem(userindex.value, user.value);
-  localStorage.setItem(userScore, 0);
+  localStorage.setItem('score1', 0);
+  localStorage.setItem('score2', 0);
+
+  
 };
 </script>
 
