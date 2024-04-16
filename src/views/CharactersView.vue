@@ -5,6 +5,9 @@ const charactersCantity = ref(0);
 
 const setCantity = (cantity) =>{
     charactersCantity.value = cantity;
+    if (cantity == 1){
+        localStorage.removeItem('username2');
+    }
     modalGame.value = false;
 }
 

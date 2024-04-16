@@ -1,15 +1,18 @@
 <script setup>
 import QuestionTemplate from './QuestionTemplate.vue';
+const emit = defineEmits(['changesInScore']);
 
-// const emits = defineEmits(['score1', 'score2'])
-// este emit se setea dependiendo del indice que reciba en una prop 
-// envia verdadero o falso del score, si la opcion seleccionada es correcta
-// hacer que las opciones sean seleccionables 
+const callCharacters  = () => {
+  emit('changesInScore');
+};
 
-const props = defineProps(['movies']);
+const props = defineProps(['movies', 'userIndex']);
 const generateRandomIndex = () => {
         return props.movies[Math.floor(Math.random() * props.movies.length)];
 }
+
+
+
 const generateRandomQuestion = () =>{
     const movie = generateRandomIndex();
     const title =  'What is the name of the television show that started on ' + movie.start_date + ' and aired on ' + movie.network + '? '
@@ -142,19 +145,16 @@ const generateQuestion = () => {
             break;
         default:
     }
-    
     return selectedQuestion;
 }
-
-
-
 </script>
 <template>
 
 <QuestionTemplate
     :question="generateQuestion()"
+    :userIndex="props.userIndex"
+    @callCharacters="callCharacters"
     ></QuestionTemplate>
-
     
 </template>
 

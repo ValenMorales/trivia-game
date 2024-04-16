@@ -5,10 +5,11 @@ const userindex = ref('');
 const props = defineProps(['index']);
 const createUser = (username) => {
    userindex.value = `username${props.index}`;
-   user.value = username;
+   const userScore = `score${props.index}`
+
+   user.value =username;
   localStorage.setItem(userindex.value, user.value);
-  
-  console.log(user.value);
+  localStorage.setItem(userScore, 0);
 }
 
 </script>
@@ -26,9 +27,7 @@ const createUser = (username) => {
             <h3>Type a username and get a random character</h3>
             <input  v-model="username" type="text" >
             <button @click="createUser(username)">select</button>
-         
         </div>
-       
     </div>
 
 </template>

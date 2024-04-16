@@ -14,8 +14,8 @@
         </li>
       </ul>
       
-      <MovieQuestion v-if="showMovieQuestion &&  route.params.category == 'movies' && values.length > 0" :movies="values"></MovieQuestion>
-      <Characters :first="first" :second="second" buttonText="submit" @buttonAction="submitanswer()"></Characters>
+      <MovieQuestion @changesInScore="changesInScore"  v-if="showMovieQuestion &&  route.params.category == 'movies' && values.length > 0" :movies="values" :userIndex="userIndex" ></MovieQuestion>
+      <Characters :changes="changes"  :first="first" :second="second" buttonText="submit" @buttonAction="submitanswer()"></Characters>
 
     </div>
 
@@ -27,6 +27,9 @@
   import MovieQuestion from '../components/MovieQuestion.vue';
   import { useRoute, useRouter } from 'vue-router';
   import { ref, onMounted } from 'vue';
+  const changes = ref(false);
+
+  const userIndex =ref(1)
  
 const router = useRouter()
   
@@ -35,9 +38,9 @@ const router = useRouter()
   const showMovieQuestion = ref(true); 
   const first = ref(true);
   const second = ref(false);
-  const counter = ref(0);
+  const counter = ref(1);
   const showFinishGame = ref(false);
-
+  const username2 = localStorage.getItem('username2');
   
 const openScore = () => {
 showFinishGame.value = true;
@@ -59,20 +62,29 @@ router.push({
     }
   });
 
+  const changesInScore = () => {
+    changes.value=true ;
+    setTimeout(() =>
+    {
+      changes.value=false;
+    }, 1000);
+  }
+
   const submitanswer = () => {
     counter.value  += 1;
-    if (counter.value % 2 == 0) {
+    if (counter.value % 2 == 0 && username2 != null ) {
       first.value = false;
       second.value = true;
-    } else {
+      userIndex.value= 2;
+    } else if (counter.value % 2 == 1 || username2 == null ) {
       first.value = true;
       second.value = false;
+      userIndex.value= 1;
     }
 
     if (counter.value == 10){
       openScore();
     }
-
     
 
     showMovieQuestion.value = false;
