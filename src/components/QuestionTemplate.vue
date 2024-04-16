@@ -1,5 +1,24 @@
 <script setup>
-const props = defineProps(['question']);
+import { ref } from 'vue';
+const props = defineProps(['question', 'userIndex']);
+const emit = defineEmits(['callCharacters'])
+const showCorrect = ref(false);
+const correctIndex = ref(-1);
+const sendResponse = (option, index) =>{
+    
+   if (option.correct == true){
+    let userScore=  localStorage.getItem('score'+props.userIndex);
+    console.log('entre');
+    userScore = parseInt(userScore) + 100;
+    localStorage.setItem('score'+props.userIndex,  userScore);
+    showCorrect.value = true;
+    correctIndex.value = index;
+    emit('callCharacters');
+   } else {
+    showCorrect.value =false;
+    correctIndex.value = index;
+   }
+}
 
 </script>
 <template>
@@ -12,23 +31,38 @@ const props = defineProps(['question']);
             </div>
         </div>
         <div class="question-footer">
-                <div class="question-footer-option" v-for="(option, index) in question.options" :key="index">
-               <h4> {{option.content}}</h4> 
+                <div      :class="{ 'correct-answer': showCorrect && correctIndex == index,
+                'incorrect-answer': !showCorrect && correctIndex == index
+                }"
+              
+                
+                class="question-footer-option" v-for="(option, index) in question.options" :key="index">
+               <h4 
+                @click="sendResponse(option, index)"
+            
+                 > {{option.content}}</h4> 
                 </div>
+               
+                
         </div>
     </div>
-
 </template>
 
 <style scoped>
-   .question-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 60vh;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+.incorrect-answer {
+    background-color: rgb(234, 0, 0);
+   
+}
+.incorrect-answer:hover {
+    background-color: rgb(234, 0, 0);
+}
+
+.correct-answer {
+background-color: green; 
+}
+.correct-answer:hover {
+    background-color: green;
     }
 
     .question-header {
@@ -72,12 +106,17 @@ const props = defineProps(['question']);
         grid-gap:5rem;
     }
 
+    
+
     .question-footer-option{
         display: flex;
         justify-content: space-around;
         width: 100%;
         text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
     }
 
+  
 
 </style>

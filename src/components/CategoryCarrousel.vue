@@ -20,8 +20,6 @@ const interval = setInterval(() => {
     openSelectedCategory(index.value);
   }
 }, 100);
-
-
  
 };
 
@@ -34,7 +32,6 @@ const seleccionar = (itemIndex) => {
 const openSelectedCategory = (indice) => {
 
   setTimeout(() => {
-    
   const category=props.categories[indice];
   router.push({
     name: "categoryView", 
@@ -64,7 +61,7 @@ const openSelectedCategory = (indice) => {
       </div>
     </div>
   </div>
-  <Characters buttonText="ROLL" @buttonAction="seleccionarAleatorio" ></Characters>
+  <Characters  buttonText="ROLL" @buttonAction="seleccionarAleatorio" ></Characters>
  
   
 </template>

@@ -1,11 +1,33 @@
 <script setup>
+import { ref, onMounted, watch } from 'vue'
 const emit = defineEmits(['buttonAction'])
-const props = defineProps(['buttonText', 'first' , 'second'])
+const props = defineProps(['buttonText', 'first' , 'second', 'changes'])
 
-const username1=localStorage.getItem('username1')
-const username2=localStorage.getItem('username2')
+const username1 = ref('')
+const username2 = ref('')
+const score1 = ref('')
+const score2 = ref('')
+
+watch(() => props.changes, (newValue) => {
+      if (newValue === true) {
+        changesInScore();
+      }
+    });
+
+const changesInScore = () => {
+   username1.value=localStorage.getItem('username1');
+ username2.value=localStorage.getItem('username2');
+ score1.value=localStorage.getItem('score1');
+ score2.value=localStorage.getItem('score2');
+}
+
+
+onMounted(() => {
+    changesInScore()
+});
+
+
 </script>
-
 
 <template>
 
@@ -14,19 +36,18 @@ const username2=localStorage.getItem('username2')
       <div class="info">
         <img v-if="username1 != '' " :src="'https://robohash.org/set_set5/' + username1 + '.png'">
       <p>{{ username1 }}</p>
-
+      <p  v-if="score1 != '0' " >{{ score1 }}</p>
       </div>
       <img v-if="first"  class="arrow" src="../../izquieda.png">
-
-
     </div>
 
     <button @click="emit('buttonAction')">{{ buttonText }}</button>
     <div class="character-info">
       <img v-if="second" class="arrow" src="../../derecha.png">
       <div class="info">
-        <img v-if="username2 != '' " :src="'https://robohash.org/set_set5/' + username2 + '.png'">
+        <img v-if="username2" :src="'https://robohash.org/set_set5/' + username2 + '.png'">
       <p>{{ username2 }}</p>
+      <p v-if="score2 != '0' " >{{ score2 }}</p>
       </div>
     </div>
    
