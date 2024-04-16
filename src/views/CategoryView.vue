@@ -14,8 +14,8 @@
         </li>
       </ul>
       
-      <MovieQuestion @changesInScore="changesInScore"  v-if="showMovieQuestion &&  route.params.category == 'movies' && values.length > 0" :movies="values" :userIndex="userIndex" ></MovieQuestion>
-      <Characters :changes="changes"  :first="first" :second="second" buttonText="submit" @buttonAction="submitanswer()"></Characters>
+      <MovieQuestion  @buttonAction="submitanswer()" @changesInScore="changesInScore"  v-if="showMovieQuestion &&  route.params.category == 'movies' && values.length > 0" :movies="values" :userIndex="userIndex" ></MovieQuestion>
+      <Characters :changes="changes"  :first="first" :second="second" ></Characters>
 
     </div>
 

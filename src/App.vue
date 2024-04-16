@@ -24,10 +24,10 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped>
 header {
-    background-color: rgb(0, 0, 0);
+    background-color: #2A4858;
     padding: 10px;
     margin:0;
-    color:white;
+    color:rgb(255, 255, 255);
 }
 
 

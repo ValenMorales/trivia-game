@@ -8,6 +8,11 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      path: '/',
+      name: 'homeView',
+      component: () => import('../views/HomeView.vue')
+    },
+    {
       path: '/categories',
       name: 'categorieCarrouselView',
       component: CategoryCarrouselView

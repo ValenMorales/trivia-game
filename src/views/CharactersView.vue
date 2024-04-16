@@ -18,7 +18,7 @@ const modalGame = ref(true);
 
     <div v-if="modalGame" class="modal-overlay">
         <div class="modal">
-            <h2>Choose the type game</h2>
+            <h2>Choose the game type</h2>
             <div class="buttons">
                 <button @click="setCantity(1)">Classic</button>
                 <button @click="setCantity(2)">Multiplayer</button>
@@ -63,8 +63,6 @@ const modalGame = ref(true);
 }
 
 .play-button:hover{
-    background-color: black;
-    color: white;
     transition: 0.5s;
 }
 
@@ -73,16 +71,20 @@ const modalGame = ref(true);
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #5BC0EB;
+    height: 90vh;
 }
 
 .cards{
     display:flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .players{
     text-align: center;
+   
 }
 
 .modal-overlay {
@@ -91,7 +93,7 @@ const modalGame = ref(true);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color:#5BC0EB;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,29 +101,50 @@ const modalGame = ref(true);
 }
 
 .modal {
-  background-color: white;
+ background-color: #f3eaea;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   z-index: 2;
   color:black;
   font-size: 1.2rem;
+  width: 30rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.modal h2{
+    margin-bottom: 3rem;
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: center;
+    color :#2A4858;
 }
 
 .buttons{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 20rem;
 }
 
 .buttons button{
-    width: 100px;
-    height: 40px;
+    width: 8rem;
+    height: 4rem;
     border: 1px solid black;
     border-radius: 50%;
-    
     cursor: pointer;
     font-size: 1.2rem;
+}
 
+.buttons button:hover{
+    background-color: #5BC0EB;
+    color: black;
+    transform: scale(1.1);
+    transition: 0.5s;
+    border: none;
 }
 </style>

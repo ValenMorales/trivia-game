@@ -61,7 +61,7 @@ const openSelectedCategory = (indice) => {
       </div>
     </div>
   </div>
-  <Characters  buttonText="ROLL" @buttonAction="seleccionarAleatorio" ></Characters>
+  <Characters :showButton="true"  buttonText="ROLL" @buttonAction="seleccionarAleatorio" ></Characters>
  
   
 </template>
