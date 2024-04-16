@@ -1,5 +1,4 @@
 <script setup>
-import SelectCharacter from '@/components/SelectCharacter.vue'
 
 import { RouterLink, RouterView } from 'vue-router'
 
@@ -53,9 +52,6 @@ nav  {
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
-
-
 
 
 

@@ -34,9 +34,7 @@ const modalGame = ref(true);
         </div>
 
         </div>
-
         <RouterLink to="/categories" class="play-button">Play</RouterLink>
-       
   
     </div>
     
@@ -50,6 +48,7 @@ const modalGame = ref(true);
 
 .play-button{
    margin:auto;
+   margin-top: 20px;
     width: 100px;
     padding:20px;
     border: 1px solid black;

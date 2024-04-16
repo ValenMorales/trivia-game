@@ -3,6 +3,7 @@ import CategoryCarrouselView from '../views/CategoryCarrouselView.vue'
 import CategoryView from '../views/CategoryView.vue'
 import CharactersView from '../views/CharactersView.vue'
 
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
