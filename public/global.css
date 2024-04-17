@@ -1,0 +1,17 @@
+:root {
+    --color-background: #FFFFFF;   /* Color de fondo blanco */
+    --color-text: #000000;         /* Color de texto negro */
+    --color-button-bg: #008CBA;    /* Color de fondo del botón azul */
+    --color-button-fg: #FFFFFF;    /* Color de texto del botón blanco */
+  }
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+  
+  .button {
+    background-color: var(--color-button-bg);
+    color: var(--color-button-fg);
+  }
+  

@@ -14,7 +14,11 @@
         </li>
       </ul>
       
-      <MovieQuestion v-if="showMovieQuestion &&  route.params.category == 'movies' && values.length > 0" :movies="values"></MovieQuestion>
+      <MovieQuestion v-if="showQuestion &&  route.params.category == 'movies' && values.length > 0" :movies="values"></MovieQuestion>
+      <MarvelQuestion v-if="showQuestion && route.params.category == 'marvel' && values.length > 0" :characters="values"></MarvelQuestion>
+      <PokemonQuestion v-if="showQuestion && route.params.category == 'pokemon' && values.length > 0" :pokemon="values"></PokemonQuestion>
+      <StarWarsQuestion v-if="showQuestion && route.params.category == 'starwars' && values.length > 0" :starWars="values"></StarWarsQuestion>
+      <RickAndMortyQuestion v-if="showQuestion && route.params.category == 'rickandmorty' && values.length > 0" :rickAndMorty="values"></RickAndMortyQuestion>
       <Characters :first="first" :second="second" buttonText="submit" @buttonAction="submitanswer()"></Characters>
 
     </div>
@@ -25,14 +29,17 @@
   import Characters from '@/components/Characters.vue';
   import SelectCharacter from '../components/SelectCharacter.vue';
   import MovieQuestion from '../components/MovieQuestion.vue';
+  import MarvelQuestion from '@/components/MarvelQuestion.vue';
+  import PokemonQuestion from '@/components/PokemonQuestion.vue';
+  import StarWarsQuestion from '@/components/StarWarsQuestion.vue';
+  import RickAndMortyQuestion from '@/components/RickAndMortyQuestion.vue';
   import { useRoute, useRouter } from 'vue-router';
-  import { ref, onMounted } from 'vue';
- 
+  import { ref, onMounted } from 'vue'; 
 const router = useRouter()
   
   const route = useRoute();
   const values = ref([]);
-  const showMovieQuestion = ref(true); 
+  const showQuestion = ref(true); 
   const first = ref(true);
   const second = ref(false);
   const counter = ref(0);
@@ -74,11 +81,10 @@ router.push({
     }
 
     
-
-    showMovieQuestion.value = false;
+    showQuestion.value = false;
 
 setTimeout(() => {
-  showMovieQuestion.value = true;
+  showQuestion.value = true;
 }, 500);
   }
   </script>
