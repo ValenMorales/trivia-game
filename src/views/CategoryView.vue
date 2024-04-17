@@ -11,7 +11,7 @@
       <p>{{ counter }} of 10 </p>
     </div>
     <MovieQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
-      v-if="showMovieQuestion && route.params.category == 'movies' && values.length > 0" :movies="values"
+      v-if="showQuestion && route.params.category == 'movies' && values.length > 0" :movies="values"
       :userIndex="userIndex"></MovieQuestion>
     <MarvelQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
       v-if="showQuestion && route.params.category == 'marvel' && values.length > 0" :characters="values"

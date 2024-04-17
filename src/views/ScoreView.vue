@@ -84,15 +84,18 @@ const router = useRouter();
     </div>
 
     <div class="scores-table">
-    <table>
+   
+      <table class="table  table-hover">
       <thead>
         <tr>
-          <th>Player</th>
-          <th>Score</th>
+          <th scope="col">Player</th>
+          <th scope="col">Score</th>
+       
         </tr>
       </thead>
       <tbody>
-        <tr v-for="score in sortedScores" :key="score.username">
+        
+        <tr  v-for="score in sortedScores ">
           <td>{{ score.username }}</td>
           <td>{{ score.score }}</td>
         </tr>
@@ -100,14 +103,52 @@ const router = useRouter();
     </table>
   </div>
     </div>
+
+
     
 </template>
 
 <style scoped>
 
+
+th {
+  text-align: center;
+}
+
+td img {
+  width: 50px;
+  height: 50px;
+
+}
+
+td p{
+  width: 80px;
+  text-align: center;
+
+}
+
+td {
+  text-align: center; 
+}
+
+.table {
+  margin: 2rem;
+}
+
+.table-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .score-view {
     display:flex;
     justify-content: space-around;
+}
+
+.scores-table {
+  width: 50%;
 }
 
 </style>
