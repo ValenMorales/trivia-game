@@ -23,8 +23,6 @@ async function getCharacters(){
     pokemon.value = await characterPokemon();
     marvel.value = await characterMarvel();
     movies.value = await tvShows();
-    eventM.value = await eventsMarvel();
-
 
     filteredCharacters.value = filterAllRickAndMorty(rickAndMorty.value);
     localStorage.setItem('rickandmorty',  JSON.stringify(rickAndMorty.value));

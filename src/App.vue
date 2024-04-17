@@ -7,15 +7,15 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
         <header >
             <nav>
-
-                    <RouterLink class="nav-link" to="/">Home</RouterLink>
+                    <div class="left">
+                      <RouterLink class="nav-link" to="/">Home</RouterLink>
+                      <img src="/public/logo3.png" alt="">
+                    </div>
                     <RouterLink class="nav-link"to="/score">scores</RouterLink>
                     <RouterLink class="nav-link"to="/characters">options</RouterLink>
              
             </nav>
             </header>
-
-
 
 
 <RouterView/>
@@ -30,22 +30,32 @@ header {
     color:#e2dcd7;
    
 }
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-
+}
 nav  {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
     padding: 0;
     margin: 0;
+    align-items: center;
 
+}
+nav img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
 }
 
 
 .nav-link {
   color:#e2dcd7;
   text-decoration: none;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border-radius: 50%;
   transition: 0.5s;
 }
