@@ -3,9 +3,15 @@ import CategoryCarrouselView from '../views/CategoryCarrouselView.vue'
 import CategoryView from '../views/CategoryView.vue'
 import CharactersView from '../views/CharactersView.vue'
 
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    {
+      path: '/',
+      name: 'homeView',
+      component: () => import('../views/HomeView.vue')
+    },
     {
       path: '/categories',
       name: 'categorieCarrouselView',

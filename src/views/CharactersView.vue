@@ -1,7 +1,17 @@
 <script setup>
 import { ref, computed } from 'vue'
 import characterChoice from '@/components/characterChoice.vue';
+const playEnabled= ref(false);
 const charactersCantity = ref(0);
+const times = ref(0)
+
+const habilitate = () =>{
+    times.value +=1;
+    if(times.value == charactersCantity.value){
+        playEnabled.value = true;
+        console.log('entreee')
+    }
+}
 
 const setCantity = (cantity) =>{
     charactersCantity.value = cantity;
@@ -18,7 +28,7 @@ const modalGame = ref(true);
 
     <div v-if="modalGame" class="modal-overlay">
         <div class="modal">
-            <h2>Choose the type game</h2>
+            <h2>Choose the game type</h2>
             <div class="buttons">
                 <button @click="setCantity(1)">Classic</button>
                 <button @click="setCantity(2)">Multiplayer</button>
@@ -30,13 +40,11 @@ const modalGame = ref(true);
         <div class="cards">
             <div v-for="index in charactersCantity" :key="index" class="players">
             <h2>Player {{ index }} </h2>
-        <characterChoice :index="index" ></characterChoice>
+        <characterChoice @habilitate="habilitate()" :index="index" ></characterChoice>
         </div>
 
         </div>
-
-        <RouterLink to="/categories" class="play-button">Play</RouterLink>
-       
+        <RouterLink  :to="playEnabled ? '/categories' : '/characters'" class="play-button">Play</RouterLink>
   
     </div>
     
@@ -49,8 +57,9 @@ const modalGame = ref(true);
 <style scoped>
 
 .play-button{
-   margin:auto;
-    width: 100px;
+
+   margin-top: 20px;
+    width: 12rem;
     padding:20px;
     border: 1px solid black;
     border-radius: 50%;
@@ -64,9 +73,9 @@ const modalGame = ref(true);
 }
 
 .play-button:hover{
-    background-color: black;
-    color: white;
     transition: 0.5s;
+    background-color: #143041;
+    color: white;
 }
 
 .characterChoice{
@@ -74,16 +83,29 @@ const modalGame = ref(true);
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #78b7bd;
+    color:#e2dcd7;
+    height: 100vh;
 }
 
 .cards{
     display:flex;
     justify-content: space-around;
     align-items: center;
+    
+}
+
+.cards h2{
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    color: #c4533e;
 }
 
 .players{
     text-align: center;
+   
 }
 
 .modal-overlay {
@@ -92,7 +114,7 @@ const modalGame = ref(true);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #143041;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,29 +122,53 @@ const modalGame = ref(true);
 }
 
 .modal {
-  background-color: white;
+ background-color: #78b7bd;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   z-index: 2;
-  color:black;
   font-size: 1.2rem;
+  width: 60%;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.modal h2{
+    margin-bottom: 3rem;
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: center;
+    color:#e2dcd7;
+
 }
 
 .buttons{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 40rem;
+    height: 10rem;
 }
 
 .buttons button{
-    width: 100px;
-    height: 40px;
-    border: 1px solid black;
+    width: 10rem;
+    height: 5rem;
     border-radius: 50%;
-    
     cursor: pointer;
     font-size: 1.2rem;
+    background-color: #c4533e;
+    border:none;
+    color:#e2dcd7;
 
+}
+
+.buttons button:hover{
+    background-color:#143041;
+    transform: scale(1.1);
+    transition: 0.5s;
+    border: none;
 }
 </style>

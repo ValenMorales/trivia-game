@@ -1,22 +1,32 @@
 <script setup>
 import { ref } from 'vue';
 const props = defineProps(['question', 'userIndex']);
-const emit = defineEmits(['callCharacters'])
+const emit = defineEmits(['callCharacters', 'buttonAction'])
 const showCorrect = ref(false);
 const correctIndex = ref(-1);
 const sendResponse = (option, index) =>{
     
    if (option.correct == true){
     let userScore=  localStorage.getItem('score'+props.userIndex);
-    console.log('entre');
     userScore = parseInt(userScore) + 100;
     localStorage.setItem('score'+props.userIndex,  userScore);
     showCorrect.value = true;
     correctIndex.value = index;
+    
     emit('callCharacters');
+    setTimeout(() =>
+    {
+        showCorrect.value = false;
+        emit('buttonAction');
+    }, 1000);
+   
    } else {
     showCorrect.value =false;
     correctIndex.value = index;
+    setTimeout(() =>
+    {
+        emit('buttonAction');
+    }, 2000);
    }
 }
 
@@ -34,7 +44,6 @@ const sendResponse = (option, index) =>{
                 <div      :class="{ 'correct-answer': showCorrect && correctIndex == index,
                 'incorrect-answer': !showCorrect && correctIndex == index
                 }"
-              
                 
                 class="question-footer-option" v-for="(option, index) in question.options" :key="index">
                <h4 
@@ -47,7 +56,6 @@ const sendResponse = (option, index) =>{
         </div>
     </div>
 </template>
-
 <style scoped>
 
 .incorrect-answer {
@@ -113,10 +121,9 @@ background-color: green;
         justify-content: space-around;
         width: 100%;
         text-align: center;
-        border-radius: 50%;
         cursor: pointer;
+        border: 1px solid black;
     }
-
   
 
 </style>

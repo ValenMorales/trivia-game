@@ -1,5 +1,4 @@
 <script setup>
-import SelectCharacter from '@/components/SelectCharacter.vue'
 
 import { RouterLink, RouterView } from 'vue-router'
 
@@ -10,7 +9,7 @@ import { RouterLink, RouterView } from 'vue-router'
             <nav>
 
                     <RouterLink class="nav-link" to="/">Home</RouterLink>
-                    <RouterLink class="nav-link"to="/scores">scores</RouterLink>
+                    <RouterLink class="nav-link"to="/score">scores</RouterLink>
                     <RouterLink class="nav-link"to="/characters">options</RouterLink>
              
             </nav>
@@ -25,12 +24,12 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped>
 header {
-    background-color: rgb(0, 0, 0);
+    background-color: #78b7bd;
     padding: 10px;
     margin:0;
-    color:white;
+    color:#e2dcd7;
+   
 }
-
 
 
 nav  {
@@ -44,19 +43,17 @@ nav  {
 
 
 .nav-link {
-  color: white;
+  color:#e2dcd7;
   text-decoration: none;
   padding: 8px 12px;
-  border-radius: 5px;
+  border-radius: 50%;
+  transition: 0.5s;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color:#c4533e;
+  transform:scale(1.1)
 }
-
-
-
-
 
 
 </style>

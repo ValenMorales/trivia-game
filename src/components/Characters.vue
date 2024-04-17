@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 const emit = defineEmits(['buttonAction'])
-const props = defineProps(['buttonText', 'first' , 'second', 'changes'])
+const props = defineProps(['buttonText', 'first' , 'second', 'changes', 'showButton'])
 
 const username1 = ref('')
 const username2 = ref('')
@@ -36,18 +36,18 @@ onMounted(() => {
       <div class="info">
         <img v-if="username1 != '' " :src="'https://robohash.org/set_set5/' + username1 + '.png'">
       <p>{{ username1 }}</p>
-      <p  v-if="score1 != '0' " >{{ score1 }}</p>
+      <p  v-if="score1 != '0' " >score: {{ score1 }}</p>
       </div>
       <img v-if="first"  class="arrow" src="../../izquieda.png">
     </div>
 
-    <button @click="emit('buttonAction')">{{ buttonText }}</button>
+    <button v-if="showButton" @click="emit('buttonAction')">{{ buttonText }}</button>
     <div class="character-info">
       <img v-if="second" class="arrow" src="../../derecha.png">
       <div class="info">
         <img v-if="username2" :src="'https://robohash.org/set_set5/' + username2 + '.png'">
       <p>{{ username2 }}</p>
-      <p v-if="score2 != '0' " >{{ score2 }}</p>
+      <p v-if="score2 != '0' " > score: {{ score2 }}</p>
       </div>
     </div>
    
@@ -59,14 +59,14 @@ onMounted(() => {
 
 
 button:hover {
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: #c4533e;
 }
 
 .characters {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin : 2rem  0 0 2rem;
 }
 
 .info img {
@@ -76,8 +76,10 @@ button:hover {
 }
 
 .characters p{
-  font-size: 20px;
+  font-size: 1.2rem;
   text-align: center;
+  font-weight: bold;
+  width: 2rem;
 }
 
 .characters button{
@@ -92,11 +94,14 @@ button:hover {
   border: 1px solid black;
   font-size: 20px;
   font-weight: bold;
+  position: absolute;
+  left: 50%;
 }
 
 .character-info {
   display:flex;
   align-items: center;
+  justify-content: center;
 }
 
 .arrow{

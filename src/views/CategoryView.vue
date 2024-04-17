@@ -1,11 +1,15 @@
 <template>
-    <div>
-      <div v-if="showFinishGame" class="modal-overlay">
+  <div v-if="showFinishGame" class="modal-overlay">
         <div class="modal">
             <h2>Game finished</h2>
         </div>
     </div>
+    <section>
+      
+ 
       <SelectCharacter></SelectCharacter>
+      <!-- 
+
       <h1>Categoría {{ $route.params.category }}</h1>
       <h2 v-if="values.length > 0">Valores de la categoría:</h2>
       <ul>
@@ -13,11 +17,14 @@
           {{ value }}
         </li>
       </ul>
-      
-      <MovieQuestion @changesInScore="changesInScore"  v-if="showMovieQuestion &&  route.params.category == 'movies' && values.length > 0" :movies="values" :userIndex="userIndex" ></MovieQuestion>
-      <Characters :changes="changes"  :first="first" :second="second" buttonText="submit" @buttonAction="submitanswer()"></Characters>
+       -->
+      <div class="counter">
+        <p>{{ counter }} of 10 </p>
+      </div>
+      <MovieQuestion  @buttonAction="submitanswer()" @changesInScore="changesInScore"  v-if="showMovieQuestion &&  route.params.category == 'movies' && values.length > 0" :movies="values" :userIndex="userIndex" ></MovieQuestion>
+      <Characters :changes="changes"  :first="first" :second="second" ></Characters>
 
-    </div>
+    </section>
 
   </template>
   
@@ -97,6 +104,18 @@ setTimeout(() => {
   
   <style scoped>
 
+  section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:auto;
+ 
+   
+    width: 90vw;
+    height: 90vh;
+    background: url(../../public/)
+  }
+
   
 .modal-overlay {
   position: fixed;
@@ -119,6 +138,17 @@ setTimeout(() => {
   z-index: 2;
   color:black;
   font-size: 1.2rem;
+}
+
+.counter p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.counter{
+  display: flex;
+  float: right;
 }
   </style>
   

@@ -1,6 +1,6 @@
 <script setup>
 import QuestionTemplate from './QuestionTemplate.vue';
-const emit = defineEmits(['changesInScore']);
+const emit = defineEmits(['changesInScore', 'buttonAction']);
 
 const callCharacters  = () => {
   emit('changesInScore');
@@ -154,6 +154,7 @@ const generateQuestion = () => {
     :question="generateQuestion()"
     :userIndex="props.userIndex"
     @callCharacters="callCharacters"
+    @buttonAction="emit('buttonAction')"
     ></QuestionTemplate>
     
 </template>
