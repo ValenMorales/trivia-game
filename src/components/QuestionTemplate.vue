@@ -12,11 +12,11 @@ const sendResponse = (option, index) =>{
     localStorage.setItem('score'+props.userIndex,  userScore);
     showCorrect.value = true;
     correctIndex.value = index;
-    showCorrect.value = false;
+    
     emit('callCharacters');
     setTimeout(() =>
     {
-        
+        showCorrect.value = false;
         emit('buttonAction');
     }, 1000);
    
@@ -56,7 +56,6 @@ const sendResponse = (option, index) =>{
         </div>
     </div>
 </template>
-
 <style scoped>
 
 .incorrect-answer {

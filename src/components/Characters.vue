@@ -59,14 +59,14 @@ onMounted(() => {
 
 
 button:hover {
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: #c4533e;
 }
 
 .characters {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin : 2rem  0 0 2rem;
 }
 
 .info img {
@@ -76,8 +76,10 @@ button:hover {
 }
 
 .characters p{
-  font-size: 20px;
+  font-size: 1.2rem;
   text-align: center;
+  font-weight: bold;
+  width: 2rem;
 }
 
 .characters button{
@@ -92,11 +94,14 @@ button:hover {
   border: 1px solid black;
   font-size: 20px;
   font-weight: bold;
+  position: absolute;
+  left: 50%;
 }
 
 .character-info {
   display:flex;
   align-items: center;
+  justify-content: center;
 }
 
 .arrow{

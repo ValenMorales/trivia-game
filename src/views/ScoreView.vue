@@ -20,6 +20,7 @@ const router = useRouter();
     const scores = ref(scoresString ? JSON.parse(scoresString) : []);
 
     const sortedScores = computed(() => {
+        console.log(scores)
       return scores.value.slice().sort((a, b) => b.score - a.score);
     });
 
@@ -32,6 +33,8 @@ const router = useRouter();
         name: "homeView",
       });
     };
+
+    
     const reset = () => {
   localStorage.setItem(username1 + "score", score1);
   localStorage.setItem(username2 + "score", score2);
@@ -49,11 +52,11 @@ const router = useRouter();
     
   }
 
-  const existingScoreIndex2 = scores.findIndex(item => item.username === username2);
+  const existingScoreIndex2 = scores.value.findIndex(item => item.username === username2);
   if (existingScoreIndex2 === -1) {
     scores.value.push({ username: username2, score: userScore2 });
   } else {
-    if (userScore2 > scores[existingScoreIndex2].score) {
+    if (userScore2 > scores.value[existingScoreIndex2].score) {
       scores.value[existingScoreIndex2].score = userScore2;
     }
   }

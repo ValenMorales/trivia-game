@@ -3,6 +3,7 @@ import { ref } from "vue";
 const user = ref("");
 const userindex = ref("");
 const props = defineProps(["index"]);
+const emit = defineEmits(["habilitate"]);
 const inUse = ref(false)
 const createUser = (username) => {
     userindex.value = `username${props.index}`;
@@ -18,25 +19,27 @@ const createUser = (username) => {
 
     setTimeout(() => {
       inUse.value = false;
-    }, 1000);
+    }, 2000);
     return;
   }
-
- 
 
   user.value = username;
   localStorage.setItem(userindex.value, user.value);
   localStorage.setItem('score1', 0);
   localStorage.setItem('score2', 0);
-
+  emit('habilitate')
+  
   
 };
 </script>
 
 <template>
-<div v-if="inUse" class="modal-overlay">
+  <section>
+
+    <div v-if="inUse" class="modal-overlay">
         <div class="modal">
             <h2>User already in use</h2>
+            <p>please write another</p>
         </div>
     </div>
   <div class="character-card">
@@ -54,9 +57,16 @@ const createUser = (username) => {
       <button @click="createUser(username)">Choose</button>
     </div>
   </div>
+
+  </section>
+
 </template>
 
 <style scoped>
+
+section {
+  height: 70vh;
+}
 
 
 .input {
@@ -68,14 +78,20 @@ const createUser = (username) => {
   height: 100%;
 }
 .input h3 {
+  width:18rem;
   font-size: 25px;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .input input {
-  border-radius: 10px;
+  width:16rem;
+  border:none;
   padding: 10px;
+  background-color:#e2dcd7;
+  color:#143041;
+  outline: none;
 }
 
 .input button {
@@ -85,11 +101,15 @@ const createUser = (username) => {
   height: 3rem;
   border-radius: 50%;
   width: 10rem;
+ 
+  background-color: #c4533e;
+  color: #e2dcd7;
 }
 
 .input button:hover {
+  background-color: #143041;
+  
   cursor: pointer;
-  transform: scale(1.1);
   transition: 0.5s;
 }
 .character-card {
@@ -130,7 +150,6 @@ const createUser = (username) => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color:#5BC0EB;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,7 +157,7 @@ const createUser = (username) => {
 }
 
 .modal {
- background-color: #f3eaea;
+ background-color: #e2dcd7;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -152,11 +171,19 @@ const createUser = (username) => {
 }
 
 .modal h2{
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 2.5rem;
     font-weight: 600;
     text-align: center;
     color :#2A4858;
+}
+
+.modal p{
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color :#2A4858;
 }
 
 </style>

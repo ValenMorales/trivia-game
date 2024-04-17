@@ -12,7 +12,7 @@ const goToCharacters = () =>{
 <template>
     <div class="hero">
         <div class="hero-text">
-            <h1>Welcome to <span>Brain Puzzle</span></h1>
+            <h1>Welcome to <span>Brain </span> <span>Puzzle</span></h1>
             <p>Test your knowledge</p>
             <button @click="goToCharacters()" >Play</button>
         </div>
@@ -20,18 +20,30 @@ const goToCharacters = () =>{
 </template>
 
 <style scoped>
+
+.hero-text h1 :nth-child(1) {
+  color: #c4533e;
+}
+
+.hero-text h1 :nth-child(2) {
+  color: #78b7bd;
+}
+
+span{
+    font-size: 4rem;
+}
 .hero{
-    background-image: url("../public/laberinto.jpg");
+    background-image: url("../public/Designer.jpeg");
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .hero-text{
-    width: 50%;
+    width: 100%;
     text-align: center;
     padding: 2rem;
     color: #fff;
@@ -50,6 +62,7 @@ const goToCharacters = () =>{
 .hero-text h1{
     font-size: 3rem;
     margin-bottom: 1rem;
+  
 }
 
 .hero-text p{
@@ -60,7 +73,7 @@ const goToCharacters = () =>{
     width: 10rem;
     height: 3rem;
     font-size: 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: 50%;
     border: none;
     outline: none;
     background-color: rgba(255, 255, 255, 0.1);
@@ -68,9 +81,11 @@ const goToCharacters = () =>{
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
     margin-top: 1rem;
     cursor: pointer;
+    transition: all 0.6s ease;
 }
 
 .hero-text button:hover{
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #78b7bd;
+    transform:scale(1.3);
 }
 </style>

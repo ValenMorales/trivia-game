@@ -47,6 +47,7 @@ const openSelectedCategory = (indice) => {
 </script>
 
 <template>
+  <section>
   <div class="Carousel">
     <h2>Categories</h2>
     <div class="slick-list" id="slick-list">
@@ -62,20 +63,33 @@ const openSelectedCategory = (indice) => {
     </div>
   </div>
   <Characters :showButton="true"  buttonText="ROLL" @buttonAction="seleccionarAleatorio" ></Characters>
- 
+</section>
   
 </template>
 
 <style scoped>
+
+section {
+  height: 97vh;
+  background: url(../../public/question_marks_background.jpg);
+  background-size: cover;
+  color:#143041;
+}
+
 .Carousel {
   width: 100%;
+  background-color: #78b7bd;
+  
+  
 }
 .Carousel h2 {
-  font-size: 26px;
+  padding-top:1rem;
+  font-size: 3rem;
   line-height: 38px;
   opacity: 0.9;
   text-transform: uppercase;
   text-align: center;
+  
 }
 
 /* images */

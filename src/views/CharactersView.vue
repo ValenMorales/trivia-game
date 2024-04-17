@@ -1,7 +1,17 @@
 <script setup>
 import { ref, computed } from 'vue'
 import characterChoice from '@/components/characterChoice.vue';
+const playEnabled= ref(false);
 const charactersCantity = ref(0);
+const times = ref(0)
+
+const habilitate = () =>{
+    times.value +=1;
+    if(times.value == charactersCantity.value){
+        playEnabled.value = true;
+        console.log('entreee')
+    }
+}
 
 const setCantity = (cantity) =>{
     charactersCantity.value = cantity;
@@ -30,11 +40,11 @@ const modalGame = ref(true);
         <div class="cards">
             <div v-for="index in charactersCantity" :key="index" class="players">
             <h2>Player {{ index }} </h2>
-        <characterChoice :index="index" ></characterChoice>
+        <characterChoice @habilitate="habilitate()" :index="index" ></characterChoice>
         </div>
 
         </div>
-        <RouterLink to="/categories" class="play-button">Play</RouterLink>
+        <RouterLink  :to="playEnabled ? '/categories' : '/characters'" class="play-button">Play</RouterLink>
   
     </div>
     
@@ -47,9 +57,9 @@ const modalGame = ref(true);
 <style scoped>
 
 .play-button{
-   margin:auto;
+
    margin-top: 20px;
-    width: 100px;
+    width: 12rem;
     padding:20px;
     border: 1px solid black;
     border-radius: 50%;
@@ -64,6 +74,8 @@ const modalGame = ref(true);
 
 .play-button:hover{
     transition: 0.5s;
+    background-color: #143041;
+    color: white;
 }
 
 .characterChoice{
@@ -71,8 +83,9 @@ const modalGame = ref(true);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #5BC0EB;
-    height: 90vh;
+    background-color: #78b7bd;
+    color:#e2dcd7;
+    height: 100vh;
 }
 
 .cards{
@@ -80,6 +93,14 @@ const modalGame = ref(true);
     justify-content: space-around;
     align-items: center;
     
+}
+
+.cards h2{
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    color: #c4533e;
 }
 
 .players{
@@ -93,7 +114,7 @@ const modalGame = ref(true);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color:#5BC0EB;
+  background-color: #143041;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,14 +122,13 @@ const modalGame = ref(true);
 }
 
 .modal {
- background-color: #f3eaea;
+ background-color: #78b7bd;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   z-index: 2;
-  color:black;
   font-size: 1.2rem;
-  width: 30rem;
+  width: 60%;
   height: 20rem;
   display: flex;
   flex-direction: column;
@@ -121,28 +141,32 @@ const modalGame = ref(true);
     font-size: 3.5rem;
     font-weight: 600;
     text-align: center;
-    color :#2A4858;
+    color:#e2dcd7;
+
 }
 
 .buttons{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 20rem;
+    width: 40rem;
+    height: 10rem;
 }
 
 .buttons button{
-    width: 8rem;
-    height: 4rem;
-    border: 1px solid black;
+    width: 10rem;
+    height: 5rem;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2rem;
+    background-color: #c4533e;
+    border:none;
+    color:#e2dcd7;
+
 }
 
 .buttons button:hover{
-    background-color: #5BC0EB;
-    color: black;
+    background-color:#143041;
     transform: scale(1.1);
     transition: 0.5s;
     border: none;

@@ -1,5 +1,5 @@
 <template>
-    <div class ="principal":style="styles">
+    <div class ="principal" :style="styles">
       <div class="slick">
         <picture>
             <img :src="'../../' + categoryImage" alt="Image" />
@@ -15,13 +15,15 @@
   const props = defineProps(['seleccionada', 'categoryName', 'categoryImage']);
 
 const styles = computed(() => ({
-  background: props.seleccionada ? 'yellow' : 'transparent',
-  transform: props.seleccionada ? 'scale(1.1)' : 'none' //
-  
+  background: props.seleccionada ? '#143041' : 'transparent',
+  transform: props.seleccionada ? 'scale(1.1)' : 'none' ,
+
 }));
   </script>
   
   <style scoped>
+
+ 
 
   p {
     font-size: 20px;
@@ -33,12 +35,13 @@ const styles = computed(() => ({
   .slick {
     position: relative;
     width: 13rem;
-    padding: 0 18px;
+    padding: 10px 10px;
     float: left;
     box-sizing: border-box;
     display: flex;
     height: 100%;
     margin:0;
+    
   }
   
   .slick img {
