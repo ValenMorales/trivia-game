@@ -9,22 +9,22 @@
     <div class="counter">
       <p>{{ counter }} of 10 </p>
     </div>
-  <MovieQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
-    v-if="showQuestion && route.params.category == 'movies' && values.length > 0" :movies="values"
-    :userIndex="userIndex"></MovieQuestion>
-  <MarvelQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
-    v-if="showQuestion && route.params.category == 'marvel' && values.length > 0" :characters="values"
-    :userIndex="userIndex"></MarvelQuestion>
-  <PokemonQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
-    v-if="showQuestion && route.params.category == 'pokemon' && values.length > 0" :pokemon="values"
-    :userIndex="userIndex"></PokemonQuestion>
-  <StarWarsQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
-    v-if="showQuestion && route.params.category == 'starwars' && values.length > 0" :starWars="values"
-    :userIndex="userIndex"></StarWarsQuestion>
-  <RickAndMortyQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
-    v-if="showQuestion && route.params.category == 'rickandmorty' && values.length > 0" :rickAndMorty="values"
-    :userIndex="userIndex"></RickAndMortyQuestion>
-  <Characters :changes="changes" :first="first" :second="second"></Characters>
+    <MovieQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
+      v-if="showQuestion && route.params.category == 'movies' && values.length > 0" :movies="values"
+      :userIndex="userIndex"></MovieQuestion>
+    <MarvelQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
+      v-if="showQuestion && route.params.category == 'marvel' && values.length > 0" :characters="values"
+      :userIndex="userIndex"></MarvelQuestion>
+    <PokemonQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
+      v-if="showQuestion && route.params.category == 'pokemon' && values.length > 0" :pokemon="values"
+      :userIndex="userIndex"></PokemonQuestion>
+    <StarWarsQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
+      v-if="showQuestion && route.params.category == 'starwars' && values.length > 0" :starWars="values"
+      :userIndex="userIndex"></StarWarsQuestion>
+    <RickAndMortyQuestion @buttonAction="submitanswer()" @changesInScore="changesInScore"
+      v-if="showQuestion && route.params.category == 'rickandmorty' && values.length > 0" :rickAndMorty="values"
+      :userIndex="userIndex"></RickAndMortyQuestion>
+    <Characters :changes="changes" :first="first" :second="second"></Characters>
 
 </template>
 
