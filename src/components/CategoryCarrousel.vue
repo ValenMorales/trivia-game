@@ -73,6 +73,7 @@ section {
   height: 97vh;
   background: url(../../public/question_marks_background.jpg);
   background-size: cover;
+
   color:#143041;
 }
 

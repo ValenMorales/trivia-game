@@ -23,12 +23,10 @@ const props = defineProps({
   userIndex: Number
 });
 
-
 const generateRandomIndex = (items) => {
   const randomIndex = Math.floor(Math.random() * items.length);
   return items[randomIndex];
 }
-
 
 const shuffleElements = (options) =>{
     options.sort(() => Math.random() - 0.5);
