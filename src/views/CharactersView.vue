@@ -26,8 +26,8 @@ const modalGame = ref(true);
 
 <template>
 
-    <div v-if="modalGame" class="modal-overlay">
-        <div class="modal">
+    <div v-if="modalGame" class="modal-overlaye">
+        <div class="modale">
             <h2>Choose the game type</h2>
             <div class="buttons">
                 <button @click="setCantity(1)">Classic</button>
@@ -108,7 +108,7 @@ const modalGame = ref(true);
    
 }
 
-.modal-overlay {
+.modal-overlaye {
   position: fixed;
   top: 0;
   left: 0;
@@ -121,7 +121,7 @@ const modalGame = ref(true);
   z-index: 2;
 }
 
-.modal {
+.modale {
  background-color: #78b7bd;
   padding: 20px;
   border-radius: 10px;
@@ -132,11 +132,10 @@ const modalGame = ref(true);
   height: 20rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  
+  align-items: center; 
 }
 
-.modal h2{
+.modale h2{
     margin-bottom: 3rem;
     font-size: 3.5rem;
     font-weight: 600;
